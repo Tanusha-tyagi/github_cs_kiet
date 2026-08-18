@@ -1,0 +1,21 @@
+name: Workflow Events
+on:
+   push:
+   pull_request:
+   schedule:
+     - cron: '*/5 * * * *'
+     workflow_dispatch:
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the trigger
+        run: echo "This workflow was triggered by the a(n) ${{ github.event_name }} event."
+  echo-goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say goodbye
+        uses: actions/checkout@v2
+      - name: Echo Goodbye
+        run: echo "Goodbye, World!"
+   
